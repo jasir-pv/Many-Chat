@@ -1,18 +1,19 @@
-import { cn } from '@/src/lib/utils'
+
 import React from 'react'
 import { Spinner } from './spinner'
+import { cn } from '@/src/lib/utils'
 
 type Props = {
-    state: boolean
-    className: string
-    children: React.ReactNode
-    color?: string
+  state: boolean
+  className?: string
+  children: React.ReactNode
+  color?: string
 }
 
-const Loader = ({children, state, className, color}: Props) => {
+const Loader = ({ children, state, className, color }: Props) => {
   return state ? (
     <div className={cn(className)}>
-        <Spinner color={color}/>
+      <Spinner color={color} />
     </div>
   ) : (
     children
