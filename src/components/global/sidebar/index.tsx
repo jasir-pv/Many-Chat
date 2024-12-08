@@ -2,6 +2,7 @@
 'use client'
 
 import { usePaths } from '@/src/hooks/use-nav'
+import { LogoSmall } from '@/src/svgs/logo-small'
 import React from 'react'
 
 type Props = {
@@ -20,7 +21,7 @@ const Sidebar = (props: Props) => {
       border-[#545454]
       bg-gradient-to-b from-[#768bdd]
       via-[#768bdd]
-      hidden
+      hiddenasd
       bottom-0
       top-0
       m-3
@@ -34,7 +35,7 @@ const Sidebar = (props: Props) => {
           w-full
           h-full
           p-3
-          bg-[#171717]
+          bg-[#0e0e0e]
           bg-opacity-90
           bg-clip-padding
           backdrop-filter
@@ -44,6 +45,9 @@ const Sidebar = (props: Props) => {
 
         <div className="flex gap-x-2 items-center p-5 justify-center">
               <LogoSmall/>
+        </div>
+        <div className="flex flex-clo py-3">
+            <Items/>
         </div>
       </div>
     </div>
