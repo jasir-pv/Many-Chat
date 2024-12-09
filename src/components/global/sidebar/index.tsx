@@ -4,6 +4,7 @@
 import { usePaths } from '@/src/hooks/use-nav'
 import { LogoSmall } from '@/src/svgs/logo-small'
 import React from 'react'
+import Items from './items'
 
 type Props = {
     slug: string
@@ -47,7 +48,7 @@ const Sidebar = (props: Props) => {
               <LogoSmall/>
         </div>
         <div className="flex flex-clo py-3">
-            <Items/>
+            <Items page={slug} slug={slug}/>
         </div>
       </div>
     </div>
