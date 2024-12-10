@@ -5,12 +5,13 @@ import { usePaths } from '@/src/hooks/use-nav'
 import { LogoSmall } from '@/src/svgs/logo-small'
 import React from 'react'
 import Items from './items'
+import { Separator } from '@radix-ui/react-context-menu'
 
 type Props = {
     slug: string
 }
 
-const Sidebar = (props: Props) => {
+const Sidebar = ({slug}: Props) => {
     const {page} = usePaths()
   return (
     <div
@@ -47,8 +48,17 @@ const Sidebar = (props: Props) => {
         <div className="flex gap-x-2 items-center p-5 justify-center">
               <LogoSmall/>
         </div>
-        <div className="flex flex-clo py-3">
-            <Items page={slug} slug={slug}/>
+        <div className="flex flex-col py-3">
+          <Items
+            page={page}
+            slug={slug}
+          />
+        </div>
+        <div className="px-16">
+          <Separator
+             aria-orientation='horizontal'
+             className='bg-[#333336]'
+          />
         </div>
       </div>
     </div>
