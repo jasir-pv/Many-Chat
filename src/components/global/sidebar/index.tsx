@@ -6,6 +6,8 @@ import { LogoSmall } from '@/src/svgs/logo-small'
 import React from 'react'
 import Items from './items'
 import { Separator } from '@radix-ui/react-context-menu'
+import ClerkAuthState from '../clerk-auth-state'
+import { HelpDuoToneWhite } from '../../icons/help-duotone-white'
 
 type Props = {
     slug: string
@@ -59,6 +61,16 @@ const Sidebar = ({slug}: Props) => {
              aria-orientation='horizontal'
              className='bg-[#333336]'
           />
+        </div>
+        <div className="px-3 flex flex-col gap-y-5">
+            <div className="flex gap-x-2">
+                <ClerkAuthState />
+                <p className="text-[#9B9CA0]">Profile</p>
+            </div>
+            <div className="flex gap-x-3">
+                <HelpDuoToneWhite />
+                <p className="text-[#9B9CA0]">Help</p>
+            </div>
         </div>
       </div>
     </div>
