@@ -1,3 +1,4 @@
+import Navbar from '@/src/components/global/navbar';
 import Sidebar from '@/src/components/global/sidebar';
 import React from 'react'
 
@@ -9,7 +10,8 @@ const Page = async (props: Props) => {
 
   return (
     <div>
-      <Sidebar/>
+  <Sidebar/>
+      <Navbar/>
     </div>
   )
 }

@@ -1,41 +1,35 @@
-
-'use client'
-
+import { PAGE_BREAD_CRUMBS } from '@/src/constants/page'
 import { usePaths } from '@/src/hooks/use-nav'
-import { LogoSmall } from '@/src/svgs/logo-small'
 import React from 'react'
-import Items from './items'
-import { Separator } from '@radix-ui/react-context-menu'
-import ClerkAuthState from '../clerk-auth-state'
-import { HelpDuoToneWhite } from '../../icons/help-duotone-white'
-import { SubscriptionPlan } from '../subscription-plan'
-import UpgradeCard from './upgrade'
 
+import { Menu } from 'lucide-react'
+import { LogoSmall } from '@/src/svgs/logo-small'
+import Items from '../sidebar/items'
+import { Separator } from '../../ui/separator'
+import ClerkAuthState from '../clerk-auth-state'
+import { HelpDuoToneWhite } from '../../icons'
+import { SubscriptionPlan } from '../subscription-plan'
+import UpgradeCard from '../sidebar/upgrade'
+import Sheet from '../sheet'
 type Props = {
     slug: string
 }
 
-const Sidebar = ({slug}: Props) => {
+const Navbar = ({slug}: Props) => {
+
     const {page} = usePaths()
-  return (
-    <div
-      className='w-[250]
-      radial
-      fixed
-      left-0
-      lg:inline-block
-      border-[#545454]
-      bg-gradient-to-b from-[#768bdd]
-      via-[#768bdd]
-      hidden
-      bottom-0
-      top-0
-      m-3
-      rounded-3xl
-      overflow-hidden      
-      '
-    >
-      <div className="flex
+    const currentPage = PAGE_BREAD_CRUMBS.includes(page) || page == slug  
+
+  return currentPage && (
+  <div className='flex flex-col'>
+    <div className="flex gap-x-3 lg:gap-x-5 justify-end">
+        <span className='lg:hidden flex items-center flex-1 gap-x-2'>
+           <Sheet
+              trigger={<Menu/>}
+              className='lg:hidden'
+              side='left'
+           >
+            <div className="flex
           flex-col
           gap-y-5
           w-full
@@ -80,8 +74,12 @@ const Sidebar = ({slug}: Props) => {
           </div>
        </SubscriptionPlan>
       </div>
-    </div>
-  )
+
+           </Sheet>
+        </span>
+    </div>      
+  </div>)
+
 }
 
-export default Sidebar
+export default Navbar
