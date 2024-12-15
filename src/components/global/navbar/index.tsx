@@ -1,7 +1,8 @@
+'use client'
+
 import { PAGE_BREAD_CRUMBS } from '@/src/constants/page'
 import { usePaths } from '@/src/hooks/use-nav'
 import React from 'react'
-
 import { Menu } from 'lucide-react'
 import { LogoSmall } from '@/src/svgs/logo-small'
 import Items from '../sidebar/items'
@@ -11,6 +12,8 @@ import { HelpDuoToneWhite } from '../../icons'
 import { SubscriptionPlan } from '../subscription-plan'
 import UpgradeCard from '../sidebar/upgrade'
 import Sheet from '../sheet'
+import CreateAutomation from '../create-automation'
+import Search from '../search'
 type Props = {
     slug: string
 }
@@ -77,6 +80,9 @@ const Navbar = ({slug}: Props) => {
 
            </Sheet>
         </span>
+        <Search/>
+        <CreateAutomation />
+        
     </div>      
   </div>)
 

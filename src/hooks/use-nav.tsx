@@ -1,9 +1,11 @@
-import { usePathname } from "next/navigation"
+'use client'
 
 
-export const usePaths = () =>{
-    const pathname = usePathname()
-    const path = pathname.split('/')
-    let page = path[path.length -1]
-    return {page, pathname}
+import { usePathname } from 'next/navigation'
+
+export const usePaths = () => {
+  const pathname = usePathname()
+  const path = pathname.split('/')
+  let page = path[path.length - 1]
+  return { page, pathname }
 }
