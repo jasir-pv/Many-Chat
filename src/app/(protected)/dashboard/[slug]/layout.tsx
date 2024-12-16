@@ -22,6 +22,7 @@ const layout = ({children, params}: Props) => {
             overflow-auto
         '>
               <Navbar slug={params.slug}/>
+              {children}
         </div>
     </div>
   )
