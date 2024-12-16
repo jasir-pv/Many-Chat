@@ -2,6 +2,7 @@ import { PLANS } from '@/src/constants/page'
 import { cn } from '@/src/lib/utils'
 import { CircleCheck } from 'lucide-react'
 import React from 'react'
+import { Button } from '../../ui/button'
 
 type Props = {
     label : string
@@ -65,6 +66,34 @@ const PaymentCard = ({current , label, landing}: Props) => {
             {i}
           </p>
         ))}
+
+{landing ? (
+          <Button
+            className={cn(
+              'rounded-full mt-5',
+              label === 'PRO'
+                ? 'bg-gradient-to-r from-indigo-500 text-white via-purple-500 to-pink-500'
+                : 'bg-background-80 text-white hover:text-background-80'
+            )}
+          >
+            {label === current
+              ? 'Get Started'
+              : current === 'PRO'
+              ? 'Free'
+              : 'Get Started'}
+          </Button>
+        ) : (
+          <Button
+            className="rounded-full mt-5 bg-background-80 text-white hover:text-background-80"
+            disabled={label === current}
+          >
+            {label === current
+              ? 'Active'
+              : current === 'PRO'
+              ? 'Downgrade'
+              : 'Upgrade'}
+          </Button>
+        )}
 
         </div>
     </div>

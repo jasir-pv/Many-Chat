@@ -12,7 +12,7 @@ import { HelpDuoToneWhite } from '../../icons'
 import { SubscriptionPlan } from '../subscription-plan'
 import UpgradeCard from '../sidebar/upgrade'
 import Sheet from '../sheet'
-import CreateAutomation from '../create-automation'
+import CreateAutomation from './create-automation'
 import Search from './search'
 import { Notification } from './notification'
 import MainBreadCrumb from '../main-bread-crumb'
@@ -28,7 +28,7 @@ const Navbar = ({slug}: Props) => {
 
   return currentPage && (
   <div className='flex flex-col'>
-    <div className="flex gap-x-3 lg:gap-x-5 justify-end">
+    <div className="flex gap-x-3 lg:gap-x-5 items-center justify-end">
         <span className='lg:hidden flex items-center flex-1 gap-x-2'>
            <Sheet
               trigger={<Menu/>}
