@@ -2,25 +2,22 @@
 'use client'
 
 import CreateAutomation from '@/src/components/global/create-automation';
-import Navbar from '@/src/components/global/navbar';
-import Sidebar from '@/src/components/global/sidebar';
+
 import React from 'react'
+import { onBoardUser } from '../../actions/user';
+import { redirect } from 'next/navigation';
 
 type Props = {}
 
 const Page = async (props: Props) => {
 
-    // server action
-
     const user = await onBoardUser()
 
-  return (
-    <div>
-   
-      page
+    if(user.status === 200 || user.status === 201){
+      return redirect(  `dashboard/${user.data?.firstname}${user.data?.lastname}`)
+    }
 
-    </div>
-  )
+  return redirect ('/sign-in')
 }
 
 export default Page;

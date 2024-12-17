@@ -22,3 +22,28 @@ export const findUser = async (clerkId: string) =>{
         },
     })
 }
+
+
+export const createUser = async (
+    clerkId: string,
+    firstname: string,
+    lastname: string,
+    email: string,
+
+) => {
+    return await client.user.create({
+        data: {
+            clerkId,
+            firstname,
+            lastname,
+            email,
+            subscription : {
+                create: {},
+            }
+        },
+        select:{
+            firstname: true,
+            lastname: true
+        }
+    })
+}
