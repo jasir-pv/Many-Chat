@@ -15,7 +15,7 @@ import Sheet from '../sheet'
 import CreateAutomation from '../create-automation'
 import Search from './search'
 import { Notification } from './notification'
-import MainBreadCrumb from '../main-bread-crumb'
+import MainBreadCrumb from '../bread-crumbs/main-bread-crumb'
 
 type Props = {
     slug: string
