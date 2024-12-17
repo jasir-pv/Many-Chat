@@ -12,6 +12,8 @@ const Page = async (props: Props) => {
 
     // server action
 
+    const user = await onBoardUser()
+
   return (
     <div>
    
