@@ -1,5 +1,6 @@
 import { QueryClient, QueryFunction } from "@tanstack/react-query"
 import { onUserInfo } from "../app/actions/user"
+import { getAllAutomaitons } from "../app/actions/automations"
 
 
 const prefetch = async (
