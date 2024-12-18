@@ -1,5 +1,5 @@
 
-'use client'
+'use client' 
 
 import CreateAutomation from '@/src/components/global/create-automation';
 
