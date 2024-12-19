@@ -10,7 +10,7 @@ const CreateAutomation = (props: Props) => {
     rounded-full p-5  from-[#3352CC] font-medium to-[#1c2d70]'>
         <Loader state={false}>
             <AutomationDuoToneWhite/>
-            <p className="lg:inline hidden"> Create an Automation</p>
+            <p className="lg:inline hidden "> Create an Automation</p>
         </Loader>
     </button>
   )

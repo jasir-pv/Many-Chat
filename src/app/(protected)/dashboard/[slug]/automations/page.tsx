@@ -1,4 +1,5 @@
 import AutomationList from '@/src/components/global/automation-list'
+import PaymentCard from '@/src/components/global/billing.tsx/payment-card'
 import CreateAutomation from '@/src/components/global/create-automation'
 import { Check } from 'lucide-react'
 import React from 'react'
