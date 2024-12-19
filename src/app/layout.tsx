@@ -3,6 +3,7 @@ import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import {ClerkProvider} from '@clerk/nextjs'
 import "./globals.css";
 import { ThemeProvider } from "../providers/theme-provider";
+import ReactQueryProvider from "../providers/react-query-provider";
 
 const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"] });
 
@@ -26,7 +27,10 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
+            <ReactQueryProvider>
             {children}
+
+            </ReactQueryProvider>
 
 
           </ThemeProvider>

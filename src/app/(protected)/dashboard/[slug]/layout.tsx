@@ -1,5 +1,6 @@
 
 import {
+  dehydrate,
   HydrationBoundary,
   QueryClient,
 } from '@tanstack/react-query'
@@ -23,7 +24,7 @@ const layout = async ({children, params}: Props) => {
 
   return (
 
-    <HydrationBoundary>
+    <HydrationBoundary state={dehydrate(query)}>
 
     <div className='p-3'>
         <Sidebar slug={params.slug}/>
