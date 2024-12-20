@@ -6,11 +6,11 @@ import { onCurrentUser } from "../user"
 import { CreateAutomation, getAutomations } from "./queries"
 
 
-export const createAutomaitons = async () =>{
+export const createAutomaitons = async (id?: string) =>{
     const user = await onCurrentUser()
 
     try {
-        const create = await CreateAutomation(user.id)
+        const create = await CreateAutomation(user.id,id)
         if (create ) return { status: 200, data: 'Automation Created'}
 
         return {status: 404, data: "Oops! something went wrong"}

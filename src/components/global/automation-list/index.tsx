@@ -18,7 +18,7 @@ const AutomationList = (props: Props) => {
     const { data } = useQueryAutomations()
 
     const { latestVariable } = useMutationDataState(['create-automation'])
-
+    console.log(latestVariable)
     const{pathname} = usePaths()
 
     console.log(data)
