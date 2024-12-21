@@ -14,7 +14,7 @@ const CreateAutomation = (props: Props) => {
   const mutationId = useMemo(() => v4(), [])
 
   console.log(mutationId)
-  const { isPending, mutate} = useCreateAutomation()
+  const { isPending, mutate} = useCreateAutomation(mutationId)
 
   return (
     <Button className='lg:px-10 gap-2 flex  bg-gradient-to-br hover:opacity-80 text-white
