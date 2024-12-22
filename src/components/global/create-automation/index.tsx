@@ -19,7 +19,13 @@ const CreateAutomation = (props: Props) => {
   return (
     <Button className='lg:px-10 gap-2 flex  bg-gradient-to-br hover:opacity-80 text-white
     rounded-full py-6  from-[#3352CC] font-medium to-[#1c2d70]'
-    onClick={() => mutate({ name: "Untitled", id: mutationId, createdAt: new Date()  })}>
+    onClick={() => 
+    mutate({ 
+      name: "Untitled", 
+      id: mutationId, 
+      createdAt: new Date(),
+      keywords: [],
+      })}>
         <Loader state={isPending}>
             <AutomationDuoToneWhite/>
             <p className="lg:inline hidden "> Create an Automation</p>

@@ -1,13 +1,22 @@
+import { getAutomationInfo } from '@/src/app/actions/automations'
 import Trigger from '@/src/components/global/automations/trigger'
 import AutomationsBreadCrumb from '@/src/components/global/bread-crumbs/automations'
 import { Warning } from '@/src/components/icons'
+import { title } from 'process'
 import React from 'react'
 
 type Props = {
     params: {id: string}
 }
 
-// wip: set some metadata
+
+export async function generateMetadata({params}: {params:{id:string}}) {
+    const info = await getAutomationInfo(params.id)
+
+    return {
+        title: info.data?.name,
+    }
+}
 
 const Page = ({params}: Props) => {
 
