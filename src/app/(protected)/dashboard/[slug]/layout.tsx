@@ -7,7 +7,7 @@ import {
 import Navbar from '@/src/components/global/navbar'
 import Sidebar from '@/src/components/global/sidebar'
 import React from 'react'
-import { PrefetchUserAutomation, PrefetchUserProfile } from '@/src/react-query/prefetch'
+import {  PrefetchUserAutomations, PrefetchUserProfile } from '@/src/react-query/prefetch'
 
 type Props = {
   children:React.ReactNode
@@ -20,7 +20,7 @@ const layout = async ({children, params}: Props) => {
 
   await PrefetchUserProfile(query)
 
-  await PrefetchUserAutomation(query)
+  await PrefetchUserAutomations(query)
 
   return (
 

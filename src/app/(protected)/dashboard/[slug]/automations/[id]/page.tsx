@@ -2,6 +2,7 @@ import { getAutomationInfo } from '@/src/app/actions/automations'
 import Trigger from '@/src/components/global/automations/trigger'
 import AutomationsBreadCrumb from '@/src/components/global/bread-crumbs/automations'
 import { Warning } from '@/src/components/icons'
+import { QueryClient } from '@tanstack/react-query'
 import { title } from 'process'
 import React from 'react'
 
@@ -20,7 +21,8 @@ export async function generateMetadata({params}: {params:{id:string}}) {
 
 const Page = ({params}: Props) => {
 
-    // wip : prefetch user automation data
+    const query = new QueryClient()
+    await PrefectchUserAutomation()
 
   return (
     <div className='flex flex-col items-center gap-y-20'>
