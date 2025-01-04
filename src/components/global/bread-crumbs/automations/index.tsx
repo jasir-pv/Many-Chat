@@ -4,6 +4,7 @@ import { ChevronRight, PencilIcon } from 'lucide-react'
 import React from 'react'
 import AcativateAutomationButton from '../../activate-automation-button'
 import { useQueryAutomation } from '@/src/hooks/use-queries'
+import { useEditAutomation } from '@/src/hooks/use-automation'
 
 
 type Props = {

@@ -3,7 +3,7 @@
 "use server"
 
 import { onCurrentUser } from "../user"
-import { CreateAutomation, findAutomation, getAutomations } from "./queries"
+import { CreateAutomation, findAutomation, getAutomations, updateAutomation } from "./queries"
 
 
 export const createAutomaitons = async (id?: string) =>{
@@ -56,8 +56,15 @@ export const updateAutomationName = async (
     await onCurrentUser()
 
     try {
-        const update = await updateAutomation
+        const update = await updateAutomation(automaiotnId, data)
+        if (update) {
+            return {status: 200, data: 'Automaiton Succesfully updated'}
+        }
+
+        return { status: 404, data: 'Oops ! could not find automation'}
+
     } catch (error) {
-        
+        return { status: 500, data: 'Oops ! something went wrong'}
+
     }
 }
