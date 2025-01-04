@@ -3,6 +3,7 @@ import { Input } from '@/src/components/ui/input'
 import { ChevronRight, PencilIcon } from 'lucide-react'
 import React from 'react'
 import AcativateAutomationButton from '../../activate-automation-button'
+import { useQueryAutomation } from '@/src/hooks/use-queries'
 
 
 type Props = {
@@ -10,8 +11,8 @@ type Props = {
 }
 
 const AutomationsBreadCrumb = ({ id }: Props) => {
-  // const { data } = useQueryAutomation(id)
-  // const { edit, enableEdit, inputRef, isPending } = useEditAutomation(id)
+  const { data } = useQueryAutomation(id)
+  const { edit, enableEdit, inputRef, isPending } = useEditAutomation(id)
 
   // const { latestVariable } = useMutationDataState(['update-automation'])
 

@@ -43,3 +43,21 @@ export const getAutomationInfo =async  (id: string) =>{
         return { status: 500 }
     }
 }
+
+
+export const updateAutomationName = async (
+    automaiotnId: string,
+    data: {
+        name?: string
+        active?: boolean
+        automation?: string
+    }
+) =>{
+    await onCurrentUser()
+
+    try {
+        const update = await updateAutomation
+    } catch (error) {
+        
+    }
+}
