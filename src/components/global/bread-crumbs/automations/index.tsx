@@ -15,7 +15,7 @@ const AutomationsBreadCrumb = ({ id }: Props) => {
   const { data } = useQueryAutomation(id)
   const { edit, enableEdit, inputRef, isPending } = useEditAutomation(id)
 
-  // const { latestVariable } = useMutationDataState(['update-automation'])
+  const { latestVariable } = useMutationDataState(['update-automation'])
 
   return (
     <div className="rounded-full w-full p-5 bg-[#18181B1A] flex items-center">
@@ -26,7 +26,7 @@ const AutomationsBreadCrumb = ({ id }: Props) => {
           color="#9B9CA0"
         />
          <span className="flex gap-x-3 items-center min-w-0">
-         {/* {edit ? (
+         {edit ? (
             <Input
               ref={inputRef}
               placeholder={
@@ -50,7 +50,7 @@ const AutomationsBreadCrumb = ({ id }: Props) => {
             >
               <PencilIcon size={14} />
             </span>
-          )} */}
+          )}
         </span>
       </div>
 

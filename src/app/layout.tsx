@@ -27,10 +27,10 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <ReactQueryProvider>
-            {children}
+            <ReduxProvider>
 
-            </ReactQueryProvider>
+            <ReactQueryProvider>  {children}  </ReactQueryProvider>
+            </ReduxProvider>
 
 
           </ThemeProvider>
