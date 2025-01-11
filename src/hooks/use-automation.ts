@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react"
 import { createAutomaitons, updateAutomationName } from "../app/actions/automations"
 import { userMutationData } from "./use-mutation-data"
+import {z} from 'zod'
 
 
 export const useCreateAutomation = (id?: string) =>{
@@ -53,4 +54,15 @@ function handleClickOutside(this: Document, event: MouseEvent){
         isPending,
     }
 
+}
+
+
+
+export const useListener = (id: string) =>{
+    const  [listener, setListener] = useState<'MESSAGE' | 'SMARTAI' > ("MESSAGE")
+
+    const promptSchema = z.object({
+        prompt: z.string().min(1),
+        reply: z.string(),
+    })
 }

@@ -2,9 +2,10 @@
 import { Input } from '@/src/components/ui/input'
 import { ChevronRight, PencilIcon } from 'lucide-react'
 import React from 'react'
-import AcativateAutomationButton from '../../activate-automation-button'
 import { useQueryAutomation } from '@/src/hooks/use-queries'
 import { useEditAutomation } from '@/src/hooks/use-automation'
+import { useMutationDataState } from '@/src/hooks/use-mutation-data'
+import ActivateAutomationButton from '../../activate-automation-button'
 
 
 type Props = {
@@ -64,7 +65,7 @@ const AutomationsBreadCrumb = ({ id }: Props) => {
           </p>
         </div>
       </div>
-      <AcativateAutomationButton id = {id} />
+      <ActivateAutomationButton id={id} />
       
     </div>
   )

@@ -35,6 +35,7 @@ const Page = async ({params}: Props) => {
                     <Warning />
                     When...
                     <Trigger id={params.id} />
+                    
                 </div>
             </div>
         </div>

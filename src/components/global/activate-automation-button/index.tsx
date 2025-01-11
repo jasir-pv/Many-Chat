@@ -3,9 +3,11 @@ import { Button } from '../../ui/button'
 import Loader from '../loader'
 import { ActiveAutomation } from '../../icons/active-automation'
 
-type Props = {}
+type Props = {
+  id:string
+}
 
-const AcativateAutomationButton = (props: Props) => {
+const ActivateAutomationButton = ({id}: Props) => {
 
     // wip: setup optimistic ui
 
@@ -24,4 +26,4 @@ const AcativateAutomationButton = (props: Props) => {
   )
 }
 
-export default AcativateAutomationButton
+export default ActivateAutomationButton

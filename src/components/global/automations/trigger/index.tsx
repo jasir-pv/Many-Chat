@@ -5,6 +5,7 @@ import { useQueryAutomation } from '@/src/hooks/use-queries'
 import React from 'react'
 import ActiveTrigger from './active'
 import { Separator } from '@/src/components/ui/separator'
+import ThenAction from '../then/then-action'
 
 
 type Props = {
@@ -41,10 +42,18 @@ const Trigger = ({ id }: Props) => {
               />
             </div>
             <ActiveTrigger
-              type={data.data.trigger[1].type}
-              keywords={data.data.keywords}
+              type={'MESSAGE'}
+              keywords={[
+                {
+                  id: 'adssadfasd',
+                  word: 'MePlease',
+                  automationId: id, 
+                }
+              ]}
             />
       </>
+
+      <ThenAction />
     </div>
   }
 }
