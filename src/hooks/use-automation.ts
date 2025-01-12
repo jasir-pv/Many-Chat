@@ -60,7 +60,7 @@ function handleClickOutside(this: Document, event: MouseEvent){
 
 
 export const useListener = (id: string) =>{
-    const  [listener, setListener] = useState<'MESSAGE' | 'SMARTAI' > ("MESSAGE")
+    const  [listener, setListener] = useState<'MESSAGE' | 'SMARTAI' | null> ( null)
 
     const promptSchema = z.object({
         prompt: z.string().min(1),
@@ -70,7 +70,7 @@ export const useListener = (id: string) =>{
     const {isPending, mutate} = userMutationData (
         ['create-lister'],
         (data: {prompt: string; replay: string}) => 
-            saveListener(id, listener, data.prompt, data.replay),
+            saveListener(id, listener || 'MESSAGE', data.prompt, data.replay),
         'automation-info'     
         
     )
