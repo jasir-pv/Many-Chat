@@ -13,6 +13,7 @@ type Props = {
 }
 
 const Trigger = ({ id }: Props) => {
+  
   const {data} = useQueryAutomation(id)
 
 
