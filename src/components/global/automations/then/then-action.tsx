@@ -1,3 +1,4 @@
+import { useListener } from '@/src/hooks/use-automation'
 import React from 'react'
 
 type Props = {
@@ -6,10 +7,16 @@ type Props = {
 
 const ThenAction = ({id }: Props) => {
 
-    const {} = useListener(id)
+    const {
+        onSetListener,
+        listener: Listener,
+        onFormSubmit,
+        register,
+        isPending,
+    } = useListener(id)
 
   return (
-    <div>ThenAction</div>
+   
   )
 }
 

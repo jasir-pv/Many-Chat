@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react"
-import { createAutomaitons, updateAutomationName } from "../app/actions/automations"
+import { createAutomaitons, saveListener, updateAutomationName } from "../app/actions/automations"
 import { userMutationData } from "./use-mutation-data"
 import {z} from 'zod'
+import useZodForm from "./use-zod-form"
 
 
 export const useCreateAutomation = (id?: string) =>{
@@ -65,4 +66,23 @@ export const useListener = (id: string) =>{
         prompt: z.string().min(1),
         reply: z.string(),
     })
+
+    const {isPending, mutate} = userMutationData (
+        ['create-lister'],
+        (data: {prompt: string; replay: string}) => 
+            saveListener(id, listener, data.prompt, data.replay),
+        'automation-info'     
+        
+    )
+
+    const {errors, onFormSubmit, register, reset, watch } = useZodForm(
+        promptSchema, 
+        mutate,
+    )
+
+    const onSetListener = (type: 'SMARTAI' | 'MESSAGE') => setListener(type )
+
+    return { onSetListener, register, onFormSubmit, listener, isPending}
 }
+
+ 

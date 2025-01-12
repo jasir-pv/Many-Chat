@@ -1,9 +1,8 @@
 
-
 "use server"
 
 import { onCurrentUser } from "../user"
-import { CreateAutomation, findAutomation, getAutomations, updateAutomation } from "./queries"
+import { addListener, CreateAutomation, findAutomation, getAutomations, updateAutomation } from "./queries"
 
 
 export const createAutomaitons = async (id?: string) =>{
@@ -68,3 +67,23 @@ export const updateAutomationName = async (
 
     }
 }
+
+
+
+
+export const saveListener = async (
+    automationId : string,
+    listener : "SMARTAI" | 'MESSAGE',
+    prompt: string,
+    replay?: string
+) => {
+    await onCurrentUser()
+    try {
+        const create = await addListener (automationId, listener, prompt, replay)
+
+        if (create) return {status: 200, data: 'Listener created'}
+        return {status: 404, data: 'Cant save listener'}
+    } catch (error) {
+        return { status: 500, data: "Oops! something went wrong"}
+    }
+}   
