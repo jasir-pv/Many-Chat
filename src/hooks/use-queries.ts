@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query"
 import { getAllAutomaitons, getAutomationInfo } from "../app/actions/automations"
+import { onUserInfo } from "../app/actions/user"
 
 
 export const useQueryAutomations = () =>{
@@ -14,5 +15,13 @@ export const useQueryAutomation = (id:string) =>{
     return useQuery ({
          queryKey: [ 'automaiotn-info'],
          queryFn: ()=> getAutomationInfo(id),
+    })
+}
+
+
+export const useQueryUser= () => {
+    return useQuery({
+        queryKey:[ 'user-profile'],
+        queryFn: onUserInfo,  
     })
 }

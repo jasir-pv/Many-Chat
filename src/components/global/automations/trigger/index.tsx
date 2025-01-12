@@ -54,7 +54,8 @@ const Trigger = ({ id }: Props) => {
             />
       </>
 
-      <ThenAction />
+       {/* WORK IN PROGRESS {DATA.DATA.LISTERNR} */}
+      <ThenAction  id= {id}/>
     </div>
   }
 }

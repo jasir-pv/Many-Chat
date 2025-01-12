@@ -22,11 +22,11 @@ const ThenAction = ({id }: Props) => {
    <TriggerButton label="Then"> 
         <div className='flex flex-col gap-y-2'>
             {AUTOMATION_LISTENERS.map((listener) =>
-            listener.type === 'SMARTAI'  ? (
+            listener.type === 'MESSAGE'  ? (
                 <SubscriptionPlan
                  key={listener.type} 
                  type= "PRO"
-                 />
+                 > </SubscriptionPlan>
             )  : (
                 ''
             )
