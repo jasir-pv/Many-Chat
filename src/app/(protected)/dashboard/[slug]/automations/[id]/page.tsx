@@ -4,7 +4,6 @@ import AutomationsBreadCrumb from '@/src/components/global/bread-crumbs/automati
 import { Warning } from '@/src/components/icons'
 import { PrefetchUserAutomation } from '@/src/react-query/prefetch'
 import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query'
-import { title } from 'process'
 import React from 'react'
 
 type Props = {

@@ -1,27 +1,26 @@
 import { useQuery } from "@tanstack/react-query"
-import { getAllAutomaitons, getAutomationInfo } from "../app/actions/automations"
+import {  getAllAutomations, getAutomationInfo } from "../app/actions/automations"
 import { onUserInfo } from "../app/actions/user"
 
 
-export const useQueryAutomations = () =>{
+export const useQueryAutomations = () => {
     return useQuery({
-        queryKey: ['user-automations'],
-        queryFn: getAllAutomaitons,
+      queryKey: ['user-automations'],
+      queryFn: getAllAutomations,
     })
-}
-
-
-export const useQueryAutomation = (id:string) =>{
-    return useQuery ({
-         queryKey: [ 'automaiotn-info'],
-         queryFn: ()=> getAutomationInfo(id),
-    })
-}
-
-
-export const useQueryUser= () => {
+  }
+  
+  export const useQueryAutomation = (id: string) => {
     return useQuery({
-        queryKey:[ 'user-profile'],
-        queryFn: onUserInfo,  
+      queryKey: ['automation-info'],
+      queryFn: () => getAutomationInfo(id),
     })
-}
+  }
+  
+  export const useQueryUser = () => {
+    return useQuery({
+      queryKey: ['user-profile'],
+      queryFn: onUserInfo,
+    })
+  }
+  

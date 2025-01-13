@@ -1,5 +1,5 @@
 import React from 'react'
-import PopOver from '../../../popover'
+import PopOver from '../../popover'
 import { BlueAddIcon } from '@/src/components/icons'
 
 

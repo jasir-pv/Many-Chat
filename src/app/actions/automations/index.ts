@@ -19,7 +19,7 @@ export const createAutomaitons = async (id?: string) =>{
 }
 
 
-export const getAllAutomaitons = async () => {
+export const getAllAutomations = async () => {
     const user = await onCurrentUser()
 
     try {

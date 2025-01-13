@@ -16,9 +16,8 @@ const Trigger = ({ id }: Props) => {
   
   const {data} = useQueryAutomation(id)
 
-
-
   if (data?.data && data?.data?.trigger.length>0){
+     
     return <div className='flex flex-col gap-y-6 items-center'>
       {/* WORK IN PROGRESS : DATA.DATA.TRIGGER[0] */}
       <ActiveTrigger 
@@ -57,6 +56,7 @@ const Trigger = ({ id }: Props) => {
        {/* WORK IN PROGRESS {DATA.DATA.LISTERNR} */}
       <ThenAction  id= {id}/>
     </div>
+    
   }
 }
 
