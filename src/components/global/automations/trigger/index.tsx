@@ -7,6 +7,9 @@ import { Separator } from '@/src/components/ui/separator'
 import ThenAction from '../then/then-action'
 import TriggerButton from '../trigger-button'
 import { AUTOMATION_TRIGGERS } from '@/src/constants/automation'
+import { useTriggers } from '@/src/hooks/use-automation'
+import { cn } from '@/src/lib/utils'
+import Keywords from './keyword'
 
 
 type Props = {
@@ -15,7 +18,7 @@ type Props = {
 
 const Trigger = ({ id }: Props) => {
   
-  const {} = useTriggers()
+  const {types, onSetTrigger, onSaveTrigger, isPending} = useTriggers(id)
   const {data} = useQueryAutomation(id)
 
   if (data?.data && data?.data?.trigger.length > 0) {
@@ -61,10 +64,27 @@ const Trigger = ({ id }: Props) => {
         <div
           key={trigger.id}
           onClick={() => onSetTrigger(trigger.type)}
+          className={cn(
+            'hover:opacity-80 text-white rounded-xl flex cursor-pointer flex-col p-3 gap-y-2',
+            !types?.find((t) => t === trigger.type)
+              ? 'bg-background-80'
+              : 'bg-gradient-to-br from-[#3352CC] font-medium to-[#1C2D70]'
+          )}
         >
+
+          <div className="flex gap-x-2 items-center">
+            {trigger.icon}
+            <p className="font-bold">{trigger.label} </p>
+          </div>
+          <p className="text-sm font-light">{trigger.description}</p>
 
         </div>
       ))}
+
+        <Keywords id={id} />
+
+
+
     </div>
 
   </TriggerButton>
