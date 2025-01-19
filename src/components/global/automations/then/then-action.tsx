@@ -23,6 +23,7 @@ const ThenAction = ({id }: Props) => {
         isPending,
     } = useListener(id)
 
+
   return (
    <TriggerButton label="Then"> 
         <div className='flex flex-col gap-y-2'>

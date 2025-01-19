@@ -1,3 +1,4 @@
+
 import AutomationList from '@/src/components/global/automation-list'
 import PaymentCard from '@/src/components/global/billing.tsx/payment-card'
 import CreateAutomation from '@/src/components/global/create-automation'
@@ -7,6 +8,8 @@ import React from 'react'
 type Props = {}
 
 const Page = (props: Props) => {
+
+
 
   // wip : connect real automation list
   return (

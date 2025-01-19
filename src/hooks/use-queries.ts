@@ -3,24 +3,24 @@ import {  getAllAutomations, getAutomationInfo } from "../app/actions/automation
 import { onUserInfo } from "../app/actions/user"
 
 
+
 export const useQueryAutomations = () => {
-    return useQuery({
-      queryKey: ['user-automations'],
-      queryFn: getAllAutomations,
-    })
-  }
-  
-  export const useQueryAutomation = (id: string) => {
-    return useQuery({
-      queryKey: ['automation-info'],
-      queryFn: () => getAutomationInfo(id),
-    })
-  }
-  
-  export const useQueryUser = () => {
-    return useQuery({
-      queryKey: ['user-profile'],
-      queryFn: onUserInfo,
-    })
-  }
-  
+  return useQuery({
+    queryKey: ['user-automations'],
+    queryFn: getAllAutomations,
+  })
+}
+
+export const useQueryAutomation = (id: string) => {
+  return useQuery({
+    queryKey: ['automation-info'],
+    queryFn: () => getAutomationInfo(id),
+  })
+}
+
+export const useQueryUser = () => {
+  return useQuery({
+    queryKey: ['user-profile'],
+    queryFn: onUserInfo,
+  })
+}
