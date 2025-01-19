@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react"
-import { createAutomaitons, saveListener, updateAutomationName } from "../app/actions/automations"
+import { createAutomaitons, saveListener, saveTrigger, updateAutomationName } from "../app/actions/automations"
 import { userMutationData } from "./use-mutation-data"
 import {z} from 'zod'
 import useZodForm from "./use-zod-form"
@@ -98,10 +98,12 @@ export const useTriggers = (id: string) =>{
 
         dispatch (TRIGGER( { trigger: { type }}))
 
-        const { isPending, mutate } = userMutationData([
-            'add-trigger', (data: {types: string[] }) => saveTrigger(),
-
-        ])
+        const { isPending, mutate } = userMutationData(
+            ['add-trigger'],
+             (data: {types: string[] }) => saveTrigger( id, data.types),
+            'automation-info', 
+        )
 
         const onSaveTrigger = () =>  mutate ( { types })
+        return { types, onSetTrigger, onSaveTrigger, isPending }
 }
