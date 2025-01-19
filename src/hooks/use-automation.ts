@@ -3,6 +3,9 @@ import { createAutomaitons, saveListener, updateAutomationName } from "../app/ac
 import { userMutationData } from "./use-mutation-data"
 import {z} from 'zod'
 import useZodForm from "./use-zod-form"
+import { AppDispatch, useAppSelector } from "../redux/store"
+import { useDispatch } from "react-redux"
+import { TRIGGER } from "../redux/slices/automation"
 
 
 export const useCreateAutomation = (id?: string) =>{
@@ -86,3 +89,19 @@ export const useListener = (id: string) =>{
 }
 
  
+
+export const useTriggers = (id: string) =>{
+    const types = useAppSelector((state) => state.AutomationReducer.trigger?.types)
+
+    const dispatch: AppDispatch = useDispatch() 
+    const onSetTrigger = (type: 'COMMENT' | 'DM' ) =>
+
+        dispatch (TRIGGER( { trigger: { type }}))
+
+        const { isPending, mutate } = userMutationData([
+            'add-trigger', (data: {types: string[] }) => saveTrigger(),
+
+        ])
+
+        const onSaveTrigger = () =>  mutate ( { types })
+}

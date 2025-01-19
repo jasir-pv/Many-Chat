@@ -15,6 +15,7 @@ type Props = {
 
 const Trigger = ({ id }: Props) => {
   
+  const {} = useTriggers()
   const {data} = useQueryAutomation(id)
 
   if (data?.data && data?.data?.trigger.length > 0) {
@@ -45,31 +46,29 @@ const Trigger = ({ id }: Props) => {
         </>
       )}
 
-      
-
        {!data.data.listener &&  <ThenAction  id= {id}/>} 
      
     </div>
     )
   }
 
-  return(
 
-  <TriggerButton label='Add trigger'>
+  return(
     <>
+  <TriggerButton label='Add trigger'>
     <div className="flex flex-col gap-y-2">
       {AUTOMATION_TRIGGERS.map((trigger) => (
         <div
           key={trigger.id}
-          // onClick={() =>}
+          onClick={() => onSetTrigger(trigger.type)}
         >
 
         </div>
       ))}
     </div>
 
-    </>
   </TriggerButton>
+    </>
   
 )
   
