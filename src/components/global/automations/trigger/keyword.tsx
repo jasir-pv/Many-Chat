@@ -5,7 +5,9 @@ type Props = {id: string}
 
 const Keywords = ({ id }: Props) => {
 
-    const {} = useKeywords()
+    const { onValueChange, keyword, onKeyPress, deleteMutation} = useKeywords(id)
+
+    const 
 
   return (
     <div>Keywords</div>

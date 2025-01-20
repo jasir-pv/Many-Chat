@@ -7,7 +7,7 @@ import {
   } from '@tanstack/react-query'
   import { toast } from 'sonner'
   
-  export const userMutationData = (
+  export const useMutationData = (
     mutationKey: MutationKey,
     mutationFn: MutationFunction<any, any>,
     queryKey?: string,

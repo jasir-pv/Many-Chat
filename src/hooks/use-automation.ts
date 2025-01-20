@@ -1,15 +1,16 @@
 import { useEffect, useRef, useState } from "react"
-import { createAutomaitons, saveKeyword, saveListener, saveTrigger, updateAutomationName } from "../app/actions/automations"
-import { userMutationData } from "./use-mutation-data"
+import { createAutomaitons, deleteKeyword, saveKeyword, saveListener, saveTrigger, updateAutomationName } from "../app/actions/automations"
+import { useMutationData} from "./use-mutation-data"
 import {z} from 'zod'
 import useZodForm from "./use-zod-form"
 import { AppDispatch, useAppSelector } from "../redux/store"
 import { useDispatch } from "react-redux"
 import { TRIGGER } from "../redux/slices/automation"
+import { useMutation } from "@tanstack/react-query"
 
 
 export const useCreateAutomation = (id?: string) =>{
-    const {isPending, mutate} = userMutationData(
+    const {isPending, mutate} = useMutationData(
         ['create-automation'], 
         () => createAutomaitons(id),
 
@@ -25,7 +26,7 @@ export const useEditAutomation = (automaiotnId: string)=>{
     const enableEdit = ()=> setEdit (true)
     const disableEdit = ()=> setEdit (false)
 
-    const {isPending, mutate} = userMutationData(['update-automation'],
+    const {isPending, mutate} = useMutationData(['update-automation'],
          (data: {name:string}) => updateAutomationName(automaiotnId,{name: data.name}),
 'automation-info',
 disableEdit
@@ -70,7 +71,7 @@ export const useListener = (id: string) =>{
         reply: z.string(),
     })
 
-    const {isPending, mutate} = userMutationData (
+    const {isPending, mutate} = useMutationData (
         ['create-lister'],
         (data: {prompt: string; replay: string}) => 
             saveListener(id, listener || 'MESSAGE', data.prompt, data.replay),
@@ -98,7 +99,7 @@ export const useTriggers = (id: string) =>{
 
         dispatch (TRIGGER( { trigger: { type }}))
 
-        const { isPending, mutate } = userMutationData(
+        const { isPending, mutate } = useMutationData(
             ['add-trigger'],
              (data: {types: string[] }) => saveTrigger( id, data.types),
             'automation-info', 
@@ -114,7 +115,7 @@ export const useKeywords = (id: string) => {
     const onValueChange = ( e: React.ChangeEvent<HTMLInputElement>) =>
         setKeyword(e.target.value)
 
-    const {mutate } = userMutationData(
+    const {mutate } = useMutationData(
         ['add-keyword'] ,
 
         (data: { keyword: string }) => saveKeyword(id, data.keyword),
@@ -128,5 +129,11 @@ export const useKeywords = (id: string) => {
         }
     }
 
-    
+    const { mutate: deleteMutation } = useMutationData(
+        ['delete-keyword'],
+        (data: {id: string }) => deleteKeyword(data.id),
+        'automation-info'
+    )
+
+    return { keyword, onValueChange, onKeyPress, deleteMutation }
 }
