@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react"
-import { createAutomaitons, saveListener, saveTrigger, updateAutomationName } from "../app/actions/automations"
+import { createAutomaitons, saveKeyword, saveListener, saveTrigger, updateAutomationName } from "../app/actions/automations"
 import { userMutationData } from "./use-mutation-data"
 import {z} from 'zod'
 import useZodForm from "./use-zod-form"
@@ -106,4 +106,27 @@ export const useTriggers = (id: string) =>{
 
         const onSaveTrigger = () =>  mutate ( { types })
         return { types, onSetTrigger, onSaveTrigger, isPending }
+}
+
+
+export const useKeywords = (id: string) => {
+    const [keyword, setKeyword] = useState("")
+    const onValueChange = ( e: React.ChangeEvent<HTMLInputElement>) =>
+        setKeyword(e.target.value)
+
+    const {mutate } = userMutationData(
+        ['add-keyword'] ,
+
+        (data: { keyword: string }) => saveKeyword(id, data.keyword),
+        'automation-info',
+        () => setKeyword('')
+    )
+
+    const onKeyPress = (e: React.KeyboardEvent<HTMLInputElement>)  =>{
+        if(e.key === 'Enter') {
+            mutate({ keyword })
+        }
+    }
+
+    
 }

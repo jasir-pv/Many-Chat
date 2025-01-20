@@ -82,8 +82,13 @@ const Trigger = ({ id }: Props) => {
       ))}
 
         <Keywords id={id} />
-
-
+        <Button
+          onClick={onSaveTrigger}
+          disabled={types?.length === 0}
+          className="bg-gradient-to-br from-[#3352CC] font-medium text-white to-[#1C2D70]"
+        >
+          <Loader state={isPending}>Create Trigger</Loader>
+        </Button>
 
     </div>
 
