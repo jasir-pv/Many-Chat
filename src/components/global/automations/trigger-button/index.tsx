@@ -1,7 +1,7 @@
 import React from 'react'
 import PopOver from '../../popover'
+import { Divide } from 'lucide-react'
 import { BlueAddIcon } from '@/src/components/icons'
-
 
 type Props = {
   children: React.ReactNode

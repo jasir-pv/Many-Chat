@@ -8,7 +8,7 @@ type Props = {
     className?: string
 }
 
-const PopOver = ({trigger, children, className}: Props) => {
+const PopOver = ({ children, trigger, className}: Props) => {
   return (
    <Popover>
         <PopoverTrigger asChild> {trigger} </PopoverTrigger>
