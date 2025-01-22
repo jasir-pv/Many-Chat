@@ -10,6 +10,8 @@ import { AUTOMATION_TRIGGERS } from '@/src/constants/automation'
 import { useTriggers } from '@/src/hooks/use-automation'
 import { cn } from '@/src/lib/utils'
 import Keywords from './keyword'
+import { Button } from '@/src/components/ui/button'
+import Loader from '../../loader'
 
 
 type Props = {
@@ -72,7 +74,14 @@ const Trigger = ({ id }: Props) => {
           </div>
         ))}
         <Keywords id={id} />
-
+        <Button
+          onClick={onSaveTrigger}
+          disabled={types?.length === 0}
+          className="bg-gradient-to-br from-[#3352CC] 
+          font-medium text-white to-[#1C2D70]"
+        >
+          <Loader state={isPending}>Create Trigger</Loader>
+        </Button>
       </div>
     </TriggerButton>
   )
