@@ -6,6 +6,8 @@ import { InstagramPostProps } from '@/src/types/post.type'
 import { CheckCircle } from 'lucide-react'
 import Image from 'next/image'
 import { cn } from '@/src/lib/utils'
+import { Button } from '@/src/components/ui/button'
+import Loader from '../../loader'
 
 type Props = {
     id: string
@@ -56,9 +58,17 @@ const PostButton = ({ id }: Props) => {
                         </div>
                     ) )}
                 </div>
+                <Button
+                    onClick={mutate}
+                    disabled={posts.length === 0}
+                    className='bg-gradient-to-br w-full from-[#3352CC] 
+                    font-medium text-white to-[#1C2D70]'
+                >
+                    <Loader state={isPending}> Attach Post </Loader>
+                </Button>
             </div>
         ): (
-            ''
+            <p className='text-text-secondary text-center'>No Post Found!</p>
         )}
 
     </TriggerButton>

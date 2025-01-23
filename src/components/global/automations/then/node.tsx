@@ -54,7 +54,7 @@ const ThenNode = ({ id }: Props) => {
       {data.data.posts.length > 0 ? (
         <></>
       ) : commentTrigger ? (
-        <PostButton />
+        <PostButton id={id}/>
       ) : (
         <></>
       )}
