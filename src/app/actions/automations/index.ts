@@ -2,6 +2,7 @@
 "use server"
 
 import { onCurrentUser } from "../user"
+import { findUser } from "../user/queries"
 import { addKeyWord, addListener, addTrigger, CreateAutomation, deleteKeywordQuery, findAutomation, getAutomations, updateAutomation } from "./queries"
 
 
@@ -131,3 +132,21 @@ export const saveKeyword = async (automationId: string, keyword: string) => {
       return { status: 500, data: 'Oops! something went wrong' }
     }
   }        
+
+
+  export const getProfilePosts = async () => {
+    const user = await onCurrentUser()
+    try {
+      const profile = await findUser(user.id)
+      const posts = await fetch(
+        `${process.env.INSTAGRAM_BASE_URL}/me/media?fields=id,caption,media_url,media_type,timestamp&limit=10&access_token=${profile?.integrations[0].token}`
+      )
+      const parsed = await posts.json()
+      if (parsed) return { status: 200, data: parsed }
+      console.log('🔴 Error in getting posts')
+      return { status: 404 }
+    } catch (error) {
+      console.log('🔴 server side Error in getting posts ', error)
+      return { status: 500 }
+    }
+  }
