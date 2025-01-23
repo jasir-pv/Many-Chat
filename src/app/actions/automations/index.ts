@@ -3,7 +3,7 @@
 
 import { onCurrentUser } from "../user"
 import { findUser } from "../user/queries"
-import { addKeyWord, addListener, addTrigger, CreateAutomation, deleteKeywordQuery, findAutomation, getAutomations, updateAutomation } from "./queries"
+import { addKeyWord, addListener, addPost, addTrigger, CreateAutomation, deleteKeywordQuery, findAutomation, getAutomations, updateAutomation } from "./queries"
 
 
 export const createAutomaitons = async (id?: string) =>{
@@ -150,3 +150,40 @@ export const saveKeyword = async (automationId: string, keyword: string) => {
       return { status: 500 }
     }
   }
+
+  export const savePosts = async (
+    autmationId: string,
+    posts: {
+      postid: string
+      caption?: string
+      media: string
+      mediaType: 'IMAGE' | 'VIDEO' | 'CAROSEL_ALBUM'
+    }[]
+  ) => {
+    await onCurrentUser()
+    try {
+      const create = await addPost(autmationId, posts)
+  
+      if (create) return { status: 200, data: 'Posts attached' }
+  
+      return { status: 404, data: 'Automation not found' }
+    } catch (error) {
+      return { status: 500, data: 'Oops! something went wrong' }
+    }
+  }
+
+
+//   export const activateAutomation = async (id: string, state: boolean) => {
+//     await onCurrentUser()
+//     try {
+//       const update = await updateAutomation(id, { active: state })
+//       if (update)
+//         return {
+//           status: 200,
+//           data: `Automation ${state ? 'activated' : 'disabled'}`,
+//         }
+//       return { status: 404, data: 'Automation not found' }
+//     } catch (error) {
+//       return { status: 500, data: 'Oops! something went wrong' }
+//     }
+//   }
