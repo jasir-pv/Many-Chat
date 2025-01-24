@@ -1,4 +1,6 @@
 import React from 'react'
+import { onSubscribe } from '../../actions/user'
+import { redirect } from 'next/navigation'
 
 type Props = {
     searchParams: {
@@ -7,14 +9,34 @@ type Props = {
     }
 }
 
-const Page = ({ searchParams: {cancel, session_id } }: Props) => {
+const Page = async ({ searchParams: {cancel, session_id } }: Props) => {
 
     if (session_id) {
-        const cusomer = await onSubscribe(session_id)
+        const customer = await onSubscribe(session_id)
+
+        if(customer.status === 200) {
+            return redirect('/dashboard')
+        }
     }
   return (
-    <div>Page</div>
+    <div className='flex flex-col justify-center items-center
+    h-screen w-full'>
+        <h4 className='text-5xl font-bold'> 404 </h4>
+        <p className="text-xl font-bold">Oops! Something went wrong</p>
+    </div>
   )
+
+
+if (cancel) {
+    return (
+      <div className='"flex flex-col justify-center items-center h-screen w-full"'>
+        <h4 className="text-5xl font-bold">404</h4>
+        <p className="text-xl font-bold">Oops! Something went wrong</p>
+      </div>
+    )
+  }
+
 }
+
 
 export default Page
