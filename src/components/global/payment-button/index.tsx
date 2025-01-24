@@ -1,14 +1,19 @@
 import React from 'react'
 import { Button } from '../../ui/button'
+import { useSubscription } from '@/src/hooks/use-subscription'
+import { CreditCardIcon, Loader2 } from 'lucide-react'
 
 type Props = {}
 
 const PaymentButton = (props: Props) => {
 
-    // working porgress
+
+  const { onSubscribe, isProcessing } = useSubscription()
 
   return (
     <Button
+    disabled={ isProcessing }
+    onClick={onSubscribe}
     className="bg-gradient-to-br
     text-white 
     rounded-full 
@@ -16,7 +21,11 @@ const PaymentButton = (props: Props) => {
    via-[#9434E6] 
    font-bold 
    to-[#CC3BD4]"
-    >Upgrade</Button>
+    >
+       {isProcessing ? <Loader2 className="animate-spin" /> : <CreditCardIcon />}
+
+      Upgrade
+      </Button>
   )
 }
 
