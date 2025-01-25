@@ -1,4 +1,4 @@
-import { getKeywordAutomation, matchKeyword } from "@/src/app/actions/webhook/queries";
+import { getKeywordAutomation, matchKeyword, trackResposes } from "@/src/app/actions/webhook/queries";
 import { sendDM } from "@/src/lib/fetch";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -42,7 +42,28 @@ export async function POST(req:NextRequest) {
                                 automation.listener?.prompt,
                                 automation.User?.integrations[0].token!
                             ) 
+
+                            if(direct_messsage.status === 200) {
+                                const tracked = await trackResposes(automation.id, 'DM')
+                                if (tracked) {
+                                    return NextResponse.json(
+                                        {
+                                            message: 'Message sent',
+                                        },
+                                        { status: 200}
+                                    )
+                                }
+                            }
+
                         }
+
+                        if(automation.listener &&
+                            automation.listener.listener === 'SMARTAI' && 
+                            automation.User?.subscription?.plan === 'PRO'
+                        ) {
+                             
+                        }
+
                 }
             }
         }
