@@ -3,7 +3,7 @@
 
 import { redirect } from "next/navigation"
 import { onCurrentUser } from "../user"
-import { getIntegration } from "./queries"
+import { createIntegration, getIntegration } from "./queries"
 import { generateTokens } from "@/src/lib/fetch"
 import axios from "axios"
 
@@ -33,9 +33,22 @@ export const onIntegrate = async (code: string) => {
 
                 const today = new Date()
                 const expire_date = today.setDate(today.getDate()+ 60 )
+                const create = await createIntegration(
+                    user.id,
+                    token.access_token,
+                    new Date(expire_date),
+                    insta_id.data.user_id
+                )
+
+                return { status: 200, data: create }
             }
+            console.log("401 debugger")
+            return { status: 401 }
         }
+        console.log("404 debugger")
+        return { status: 404 }
     } catch (error) {
-        
+        console.log("500 debugger", error)
+        return { status: 500 }
     }
 }
