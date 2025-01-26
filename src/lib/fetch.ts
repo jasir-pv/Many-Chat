@@ -38,6 +38,33 @@ export const sendDM = async (
 }
 
 
+export const sendPrivateMessage = async (
+  userId: string,
+  recieverId: string,
+  prompt: string,
+  token: string
+) => {
+  console.log('sending message')
+  return await axios.post(
+    `${process.env.INSTAGRAM_BASE_URL}/${userId}/messages`,
+    {
+      recipient: {
+        comment_id: recieverId,
+      },
+      message: {
+        text: prompt,
+      },
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+    }
+  )
+}
+
+
 export const generateTokens = async (code: string) => {
   const insta_form = new FormData()
   insta_form.append('client_id', process.env.INSTAGRAM_CLIENT_ID as string)
