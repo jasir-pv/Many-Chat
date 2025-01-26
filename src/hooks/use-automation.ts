@@ -49,7 +49,7 @@ function handleClickOutside(this: Document, event: MouseEvent){
     return () => {
         document.removeEventListener ('mousedown', handleClickOutside)
     }
-}, [])
+}, [mutate])
 
     return {
         edit,
