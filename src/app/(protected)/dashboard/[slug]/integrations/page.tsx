@@ -1,6 +1,6 @@
 import { INTEGRATION_CARDS } from '@/src/constants/integrations'
 import React from 'react'
-import IntegrationCard from './_components/integration-card/page'
+import IntegrationCard from './_components/integration-card'
 
 type Props = {}
 

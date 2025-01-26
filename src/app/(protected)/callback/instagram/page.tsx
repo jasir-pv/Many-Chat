@@ -4,12 +4,12 @@ import { redirect } from 'next/navigation'
 import React from 'react'
 
 type Props = {
-    searhParams: {
+    searchParams: {
         code: string
     }
 }
 
-const Page = async ({ searhParams: { code } }: Props) => {
+const Page = async ({ searchParams: { code } }: Props) => {
 
     if (code) {
         console.log(code)
