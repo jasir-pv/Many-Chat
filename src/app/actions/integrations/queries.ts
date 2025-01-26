@@ -14,3 +14,20 @@ export const updateIntegration = async (token: string, expire: Date,
         }
     })
 }
+
+
+export const getIntegration = async ( clerkId : string) => {
+    
+    return await client.user.findUnique({
+        where: {
+            clerkId,
+        },
+        select: {
+            integrations: {
+                where: {
+                    name: 'INSTAGRAM'
+                }
+            }
+        }
+    })
+}
