@@ -7,10 +7,14 @@ import { AutomationDuoToneWhite } from '../../icons'
 import { useCreateAutomation } from '@/src/hooks/use-automation'
 import { Button } from '../../ui/button'
 import { v4 } from 'uuid'
+import Link from 'next/link'
 
-type Props = {}
+type Props = {
+  page: string
+  slug: string
+}
 
-const CreateAutomation = (props: Props) => {
+const CreateAutomation = ({slug}: Props) => {
   const mutationId = useMemo(() => v4(), [])
 
   console.log(mutationId)
@@ -27,8 +31,13 @@ const CreateAutomation = (props: Props) => {
       keywords: [],
       })}>
         <Loader state={isPending}>
+        <Link  href={`/dashboard/${slug}/integrations`}>  
             <AutomationDuoToneWhite/>
-            <p className="lg:inline hidden "> Create an Automation</p>
+            <p className="lg:inline hidden ">
+               Create an Automation
+            
+               </p>
+               </Link>
         </Loader>
     </Button>
   )

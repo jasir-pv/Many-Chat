@@ -42,7 +42,7 @@ const IntegrationCard = ({description, icon, strategy, title}: Props) => {
       >
         {integrated ? 'Connected' : 'Connect'}
       </Button>
-    </div>
+    </div> 
   )
 }
 
