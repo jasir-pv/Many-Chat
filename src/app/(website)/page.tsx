@@ -52,7 +52,7 @@ export default function Home() {
                 <div className="h-8 w-8 rounded-lg bg-white flex items-center justify-center font-bold">
                   li
                 </div>
-                <span className="text-xl font-semibold text-primary-foreground">
+                <span className="text-xl font-semibold text-slate-400">
                   Slide
                 </span>
               </div>
@@ -61,8 +61,8 @@ export default function Home() {
                 <Link href="#pricing">Pricing</Link>
                 <Link href="#about">About</Link>
               </nav>
-              <Button className="bg-white text-primary">
-                <Link href="/dashboard">Login</Link>
+              <Button className="bg-white text-secondary ">
+                <Link href="/dashboard" >Login</Link>
               </Button>
             </div>
 
@@ -82,7 +82,7 @@ export default function Home() {
                   size="lg"
                   className="bg-blue-600 text-white hover:bg-blue-700"
                 >
-                  Get Started
+                  <Link href="/dashboard" >Get Started</Link>
                 </Button>
                 <Button
                   size="lg"
@@ -146,7 +146,9 @@ export default function Home() {
                   </ul>
                 </CardContent>
                 <CardFooter>
-                  <Button className="w-full">{plan.cta}</Button>
+                  <Button className="w-full">
+                  <Link href="/dashboard" >{plan.cta}</Link>
+                  </Button>
                 </CardFooter>
               </Card>
             ))}
